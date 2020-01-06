@@ -1,4 +1,4 @@
-\documentclass[10pt,english]{moderncv}
+\documentclass[10pt,english,colorlinks]{moderncv}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin9]{inputenc}
@@ -12,6 +12,9 @@
 \usepackage{setspace}
 \setstretch{1}
 
+% see https://tex.stackexchange.com/questions/48632/underscores-in-words-text/48633 - for underscore not to be escaped in href (for doi)
+\chardef\_=`_
+
 \makeatletter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
@@ -19,6 +22,9 @@
 
 
 \def \fullcv {1}
+\def \withdoi {1}
+\def \witharxiv {1}
+\def \withhal {1}
 
 % writing utilities
 
@@ -26,8 +32,31 @@
 %  -> use this comment to ask questions on what other wrote/answer questions with optional arguments (up to 4 answers)
 \usepackage{xparse}
 \usepackage{ifthen}
+\usepackage{xstring}
+
 \DeclareDocumentCommand{\full}{m}{
 \ifthenelse{\fullcv=1}{#1}{}
+}
+
+\DeclareDocumentCommand{\doi}{m}{
+%\def \unescapeddoi {\StrSubstitute{#1}{\{\\_\}}{_}}
+\ifthenelse{\withdoi=1}{\href{https://dx.doi.org/#1}{DOI:#1}}{}
+}
+
+\DeclareDocumentCommand{\arxiv}{m}{
+\ifthenelse{\witharxiv=1}{\href{https://arxiv.org/abs/#1}{arXiv:#1}}{}
+}
+
+\DeclareDocumentCommand{\hal}{m}{
+\ifthenelse{\withhal=1}{\href{https://hal.archives-ouvertes.fr/#1}{HAL:#1}}{}
+}
+
+% when noi doi but issn or isbn: must provide the link
+\DeclareDocumentCommand{\issn}{m m}{
+\ifthenelse{\withdoi=1}{\href{#2}{ISSN:#1}}{}
+}
+\DeclareDocumentCommand{\isbn}{m m}{
+\ifthenelse{\withdoi=1}{\href{#2}{ISBN:#1}}{}
 }
 
 
@@ -54,7 +83,7 @@
 % \address{street and number}{postcode city}
 % '\\' adds a line break
 %\address{13 rue du Four\vspace{1mm}}{75006 Paris, France}
-\address{90 Tottenham Court Road\vspace{1mm}}{London W1T 4TJ, UK}
+\address{University College London\\Center for Advanced Spatial Analysis\\90 Tottenham Court Road\\\vspace{1mm}}{London W1T 4TJ, UK}
 % optional
 %\phone{+43(0)999 9999}
 % optional
@@ -93,7 +122,7 @@
 
 \cventry{March 2018-August 2019}{Post-doctoral Researcher}{Complex Systems Institute - UPS CNRS 3611 ISC-PIF}{Paris}{France}{Postdoc project: \textit{Extending methods to explore spatial simulation models}}
 
-
+\cventry{Feb. 2015--Feb. 2018}{PhD Candidate}{G{\'e}ographie-cit{\'e}s (UMR 8504 CNRS) / LVMT (UMR-T 9403 IFSTTAR)}{}{}{Characterizing and Modeling the Co-evolution of Transportation Networks and Territories}
 
 
 
@@ -103,83 +132,79 @@
 
 %\section{Selected publications}
 
-\cvitem{}{Raimbault J., Broere J., Somveille M., Serna J.M., Strombom E. Moore C., Sugar L., Zhu B. (2019). A spatial agent based model for simulating and optimizing networked eco-industrial systems. \textit{Resources Conservation and Recycling.} In Press.}
+\cvitem{}{Raimbault J., Broere J., Somveille M., Serna J.M., Strombom E. Moore C., Sugar L., Zhu B. (2020). A spatial agent based model for simulating and optimizing networked eco-industrial systems. \textit{Resources Conservation and Recycling.} In Press.}
 
-\cvitem{}{Raimbault, J. \& Bergeaud, A. (2018). An Empirical Analysis of the Spatial Variability of Fuel Prices in the United States. \textit{Transportation Research Part A.} In Press.}
+\cvitem{}{Bergeaud, A. \& Raimbault, J. (2020). An Empirical Analysis of the Spatial Variability of Fuel Prices in the United States. \textit{Transportation Research Part A: Policy and Practice}, 132, 131-143. \doi{10.1016/j.tra.2019.10.016}}
 
-\cvitem{}{Raimbault, J. (2019). Second-order Control of Complex Systems with Correlated Synthetic Data. \textit{Complex Adaptive Systems Modeling.} In Press.}
+\cvitem{}{Raimbault, J. (2019). Second-order Control of Complex Systems with Correlated Synthetic Data. \textit{Complex Adaptive Systems Modeling}, 7(4). \doi{10.1186/s40294-019-0065-y}}
 
-
-\cvitem{}{Raimbault, J. (2019). Multi-dimensional Urban Network Percolation. \textit{Journal of Interdisciplinary Methodologies and Issues in Science.} In Press.}
-
+\cvitem{}{Raimbault, J. (2019). Multi-dimensional Urban Network Percolation. \textit{Journal of Interdisciplinary Methodologies and Issues in Science}, 5(5). \doi{110.18713/JIMIS-180719-5-5}}
 
 
 \cvitem{}{Raimbault J., Cottineau C., Le Texier M., Le Nechet F. \& Reuillon R.
- (2019). Space Matters: extending sensitivity analysis to initial spatial conditions in geosimulation models. \textit{Journal of Artificial Societies and Social Simulation}, 22(4), 10.}
+ (2019). Space Matters: extending sensitivity analysis to initial spatial conditions in geosimulation models. \textit{Journal of Artificial Societies and Social Simulation}, 22(4), 10. \doi{10.18564/jasss.4136}}
 
-\cvitem{}{Banos A., Chasset P.-O., Commenges A. Cottineau C., Pumain D. \& Raimbault J. (2019). Empowering open science with reflexive and spatialised indicators. \textit{Environment and Planning B: Urban Analytics and City Science,} 2399808319870816.}
+\cvitem{}{Raimbault J., Chasset P.-O., Cottineau C., Commenges A., Kosmopoulos C., Pumain D. \& Banos A. (2019). Empowering open science with reflexive and spatialised indicators. \textit{Environment and Planning B: Urban Analytics and City Science,} 2399808319870816. \doi{10.1177/2399808319870816}}
 
 
+\cvitem{}{Raimbault, J. (2019). Exploration of an interdisciplinary scientific landscape. \textit{Scientometrics}, 119(2), 617-641. \doi{10.1007/s11192-019-03090-3}}
 
-\cvitem{}{Raimbault, J. (2019). Exploration of an interdisciplinary scientific landscape. \textit{Scientometrics}, 119(2), 617-641.}
+\cvitem{}{Raimbault, J. (2018). Calibration of a density-based model of urban morphogenesis. \textit{PloS one}, 13(9), e0203516. \doi{10.1371/journal.pone.0203516}}
 
-\cvitem{}{Raimbault, J. (2018). Calibration of a density-based model of urban morphogenesis. \textit{PloS one, 13(9), e0203516.}}
+\cvitem{}{Raimbault, J. (2018). Indirect evidence of network effects in a system of cities. \textit{Environment and Planning B: Urban Analytics and City Science}, 2399808318774335. \doi{10.1177/2399808318774335}}
 
-\cvitem{}{Raimbault, J. (2018). Indirect evidence of network effects in a system of cities. \textit{Environment and Planning B: Urban Analytics and City Science}, 2399808318774335.}
-
-\cvitem{}{Bergeaud, A., Potiron, Y., \& Raimbault, J. (2017). Classifying patents based on their semantic content. \textit{PloS one}, 12(4), e0176310.}
+\cvitem{}{Bergeaud, A., Potiron, Y., \& Raimbault, J. (2017). Classifying patents based on their semantic content. \textit{PloS one}, 12(4), e0176310. \doi{10.1371/journal.pone.0176310}}
 
 
 \bigskip
 
 \section{Book chapters}
 
+\cvitem{}{Raimbault, J. (2020). Models for the co-evolution of cities and networks, \textit{forthcoming in Handbook on Cities and Networks, Rozenblat C., Neal Z., eds.} \arxiv{1804.09430}}
 
 
+\cvitem{}{Pumain D., \& Raimbault J. (2020) Perspectives on Urban Theories. In: \textit{Pumain D. (ed.), Theories and Models of Urbanization (pp. 303-330). Lecture Notes in Morphogenesis}. Springer, Cham.}
 
-\cvitem{}{Raimbault, J. (2019). An urban morphogenesis model capturing interactions between networks and territories. In \textit{The Mathematics of Urban Morphology (pp. 383-409)}. Birkhauser, Cham.}
+\cvitem{}{Raimbault, J. (2020). Unveiling co-evolutionary patterns in systems of cities : systematic exploration of the SimpopNet model. In \textit{Pumain D. (ed.), Theories and Models of Urbanization (pp. 261-278). Lecture Notes in Morphogenesis}. Springer, Cham. \arxiv{1809.00861}}
 
-\cvitem{}{Raimbault, J. (2019). Models for the co-evolution of cities and networks, \textit{forthcoming in Handbook on Cities and Networks, Rozenblat C., Neal Z., eds.} \href{https://arxiv.org/abs/1804.09430}{arXiv:1804.09430}}
+\cvitem{}{Raimbault, J. (2020). Relating complexities for the reflexive study of complex systems. In \textit{Pumain D. (ed.), Theories and Models of Urbanization (pp. 27-41). Lecture Notes in Morphogenesis}. Springer, Cham.}
 
-\cvitem{}{Raimbault, J. (2018). Unveiling co-evolutionary patterns in systems of cities : systematic exploration of the SimpopNet model, \textit{forthcoming in Theories and models of urbanization. Pumain D., ed. Springer Lecture Notes in Morphogenesis.} \href{https://arxiv.org/abs/1809.00861}{arXiv:1809.00861}}
 
-\cvitem{}{Raimbault, J. (2018). Relating complexities for the reflexive study of complex systems, \textit{forthcoming in Theories and models of urbanization. Pumain D., ed. Springer Lecture Notes in Morphogenesis.}}
+\cvitem{}{Raimbault, J., \& Pumain, D. (2019). Methods for Exploring Simulation Models. In \textit{Pumain D. (ed.), Geographical Modeling (pp. 125-150)}. Wiley Online Library. \doi{10.1002/9781119687290.ch5}}
 
-\cvitem{}{Raimbault, J. (2018). Mutations of transportation networks in China, \textit{Medium Project e-book. Aveline N., ed.}}
+\cvitem{}{Raimbault, J. (2019). An urban morphogenesis model capturing interactions between networks and territories. In \textit{D'Acci L. (ed.), The Mathematics of Urban Morphology (pp. 383-409)}. Birkhauser, Cham. \doi{10.1007/978-3-030-12381-9\_17} \arxiv{1805.05195}}
+
+
+\cvitem{}{Raimbault, J. (2019). Evolving accessibility landscapes: mutations of transportation networks in China. In \textit{Aveline N. (ed.), Pathways of Sustainable Development across China: the Cases of Hangzhou, Datong and Zhuhai (pp. 89-108)}. Imago Editor, \isbn{978-88-94384-71-0}{http://mediumcities-china.org/download/2262/} \arxiv{1812.01473} \hal{halshs-02265423}}
 
 
 \bigskip
-\newpage
+%\newpage
 
 \section{Conference papers}
 
-\cvitem{}{Raimbault, J. \& Perret, J. (2019).
-Generating urban morphologies at large scales. \textit{The 2019 Conference on Artificial Life 2019 NO. 31}, 179-186.}
+\cvitem{}{Raimbault, J. \& Perret, J. (2019). Generating urban morphologies at large scales. \textit{The 2019 Conference on Artificial Life 2019 NO. 31}, 179-186. \doi{10.1162/isal\_a\_00159}}
 
-%\cvitem{}{Raimbault, J. (2019). Espace et complexit{\'e}s des syst{\`e}mes territoriaux. forthcoming in \textit{Actes des Journ{\'e}es de Rochebrune 2019.}}
 
-%\cvitem{}{Raimbault, J. (2018). Mod{\'e}lisation des interactions entre r{\'e}seaux de transport et territoires : une approche par la co-{\'e}volution. forthcoming in \textit{Actes des Journ{\'e}es Pacte-Citeres.}}
-% TODO arxiv trad en
 
-\cvitem{}{Raimbault, J. (2017). An applied knowledge framework to study complex systems, \textit{Complex Systems Design \& Management} (pp.31-45). \href{https://arxiv.org/abs/1706.09244}{arXiv:1706.09244}}
+\cvitem{}{Raimbault, J. (2017). An applied knowledge framework to study complex systems, \textit{Complex Systems Design \& Management} (pp.31-45). \arxiv{1706.09244}}
 
 
 
 \cvitem{}{Raimbault, J. (2017). Identification de causalit{\'e}s dans des donn{\'e}es spatio-temporelles, Sageo 2017 Proceedings. \href{https://arxiv.org/abs/1709.08684}{arXiv:1709.08684 (English translation)}}
 
 
-\cvitem{}{Raimbault, J. (2017). A Discrepancy-Based Framework to Compare Robustness Between Multi-attribute Evaluations. In \textit{Complex Systems Design \& Management} (pp. 141-154), Springer.}
+\cvitem{}{Raimbault, J. (2017). A Discrepancy-Based Framework to Compare Robustness Between Multi-attribute Evaluations. In \textit{Complex Systems Design \& Management} (pp. 141-154), Springer. \doi{10.1007/978-3-319-49103-5\_11} \arxiv{1608.00840} \hal{halshs-01424253}}
 
 
 
-\cvitem{}{Raimbault, J. (2017). Investigating the empirical existence of static user equilibrium. \textit{Transportation Research Procedia}, 22, 450-458.}
+\cvitem{}{Raimbault, J. (2017). Investigating the empirical existence of static user equilibrium. \textit{Transportation Research Procedia}, 22, 450-458. \doi{10.1016/j.trpro.2017.03.053} \arxiv{1608.05266} \hal{halshs-01360243}}
 
 
 
-\cvitem{}{Raimbault, J. (2017). Models coupling urban growth and transportation network growth: An algorithmic systematic review approach. \textit{Plurimondi}, (17), \textit{ECTQG 2015 Proceedings}. \href{https://arxiv.org/abs/1605.08888}{arXiv:1605.08888}}
+\cvitem{}{Raimbault, J. (2017). Models coupling urban growth and transportation network growth: An algorithmic systematic review approach. \textit{Plurimondi}, (17), \textit{ECTQG 2015 Proceedings}. \issn{2420-921X}{http://plurimondi.poliba.it/index.php/Plurimondi/article/view/30} \arxiv{1605.08888}}
 
-
-\cvitem{}{Raimbault, J. (2014). User-Based Solutions for Increasing Level of Service in Bike-Sharing Transportation Systems. In \textit{Complex Systems Design \& Management} (pp. 31-44), Springer. \textit{\textbf{Best Student Paper Award at CSDM 2014.}}}
+\cvitem{}{Raimbault, J. (2014). User-Based Solutions for Increasing Level of Service in Bike-Sharing Transportation Systems. In \textit{Complex Systems Design \& Management} (pp. 31-44), Springer. \doi{10.1007/978-3-319-11617-4\_3}  \textit{\textbf{Best Student Paper Award at CSDM 2014.}}}
 
 \cvitem{}{Raimbault, J., Banos, A. \& Doursat, R. (2014) A Hybrid Network/Grid Model of Urban Morphogenesis and Optimization. \textit{Proceedings of the 4th International Conference on Complex Systems and Applications} (ICCSA 2014), June 23-26, 2014, Universit{\'e} de Normandie, Le Havre, France; M. A. Aziz-Alaoui, C. Bertelle, X. Z. Liu, D. Olivier, eds.: pp. 51-60.}
 
@@ -191,13 +216,24 @@ Generating urban morphologies at large scales. \textit{The 2019 Conference on Ar
 
 \section{Communications}
 
-\cvitem{}{A multi-scalar model for systems of cities, \textit{Conference on Complex Systems 2019, Singapore, Oct. 2019.}}
+\cvitem{}{Worldwide estimation of parameters for a simple reaction-diffusion model of urban growth, \textit{International Land-use Symposium 2019, Paris, Dec 2019.} \hal{halshs-02406539}}
 
-% TODO jig
+\cvitem{}{A multi-scalar model for systems of cities, \textit{Conference on Complex Systems 2019, Singapore, Oct. 2019.} \hal{halshs-02351722}}
 
-% TODO TheoQuant
+\cvitem{}{A meta-analysis of models for interactions between transportation networks and territories. \textit{European Colloquium on Theoretical and Quantitative Geography, Mondorf, Luxembourg, Sep 2019.} \hal{halshs-02284848}}
 
-%\cvitem{}{Des syst{\`e}mes naturels aux syst{\`e}mes urbains: g{\'e}n{\'e}ration de r{\'e}seaux de transport optimaux par mod{\`e}le slime-mould, \textit{poster at Biomim'expo 2018, Paris, Oct. 2018.}}
+\cvitem{}{Raimbault J., Denis E., Pumain D. (2019). An evolutionary theory for the spatial dynamics of urban systems worldwide. \textit{European Colloquium on Theoretical and Quantitative Geography, Mondorf, Luxembourg, Sep 2019.} \hal{halshs-02284897}}
+
+
+\cvitem{}{Vanhoof M., Godoy-Lorite A., Murcio R., Iacopini I., Zdanowska N., Raimbault J., Milton R., Arcaute E., Batty M. (2019). Using Foursquare data to reveal spatial and temporal patterns in London. \textit{NetMob 2019, Oxford, United Kingdom, Jul 2019.} \hal{halshs-02284843}}
+
+\cvitem{}{De l'endog{\'e}n{\'e}it{\'e} des hi{\'e}rarchies dans les syst{\`e}mes territoriaux complexes. \textit{Journ{\'e}e Des jeunes chercheurs de l'Institut de G{\'e}ographie : Compter, classer, cat{\'e}goriser, Paris, Apr. 2019.} \hal{halshs-02089520}}
+
+\cvitem{}{Towards multi-scalar models for the co-evolution of transportation networks and territories. \textit{Theo Quant 2019, Universit{\'e} de Franche-Comt{\'e}, Besancon, Feb 2019.} \hal{halshs-02013006}}
+
+\cvitem{}{Des syst{\`e}mes naturels aux syst{\`e}mes urbains: g{\'e}n{\'e}ration de r{\'e}seaux de transport optimaux par mod{\`e}le slime-mould, \textit{poster at Biomim'expo 2018, Paris, Oct. 2018.} \hal{halshs-01904499}}
+
+\cvitem{}{Raimbault, J. (2018). Mod{\'e}lisation des interactions entre r{\'e}seaux de transport et territoires : une approche par la co-{\'e}volution. \textit{Journ{\'e}e d'{\'e}tude Pacte-Citeres, Grenoble, Nov. 2018.}}
 
 \cvitem{}{A multi-dimensional percolation approach to characterize sustainable mega-city regions, \textit{MARAMI 2018, Avignon, Oct. 2018.}}
 
@@ -289,9 +325,9 @@ Generating urban morphologies at large scales. \textit{The 2019 Conference on Ar
 
 \cvitem{}{Raimbault, J. \& Le Nechet, F. (2018). Closing the loop: Introducing Endogenous Transport Provision in a LUTI Model. \textit{Under review for Journal of Transport Geography.}}
 
+\cvitem{}{Raimbault, J. (2019). Space and complexities of territorial systems. \href{https://arxiv.org/abs/1901.09869}{arxiv:1901.09869}}
 
-%\cvitem{}{Raimbault, J. (2018). Espace et complexit{\'e}s des syst{\`e}mes territoriaux. \textit{Under review for Rochebrune 2019.}}
-% TODO submit
+\cvitem{}{Raimbault, J. (2019). Modeling interactions between transportation networks and territories: a co-evolution approach. \href{https://arxiv.org/abs/1902.04802}{arxiv:1902.04802}}
 
 \cvitem{}{Raimbault, J. (2018). Co-evolution and morphogenetic systems. \href{https://arxiv.org/abs/1803.11457}{arxiv:1803.11457}}
 
@@ -365,6 +401,7 @@ Interdisciplinary approaches of modeling and simulations in urban planning and a
 %
 \section{Teaching}
 
+\cvitem{June 2019}{ExModelo summer school on simulation models, organized by ISC-PIF and OpenMOLE team.}
 
 %\cventry{October 2018}{Seminar big data in transportation studies}{Ecole des Ponts et Chauss{\'e}es}{Champs-sur-Marne}{%France
 %}{%\textit{Transportation and Mobility Master Seminar}
@@ -390,16 +427,17 @@ Interdisciplinary approaches of modeling and simulations in urban planning and a
 \section{Reviewing}
 
 
+\cvitem{2020}{Member of the program committee of the ACM SIGSIM PADS Conference}
 
-\cvitem{since 2019}{Reviewing for \textit{Scientific Reports, Sustainability, International Journal of Geographical Information}}
+\cvitem{since 2019}{Reviewing for \textit{Scientific Reports} (1), \textit{Sustainability} (5), \textit{International Journal of Geographical Information} (1), \textit{Environment and Planning B} (1), \textit{Scientometrics} (1), \textit{Energies} (1), \textit{Applied Spatial Analysis and Policy} (1)}
 
 %\cvitem{since 2018}{Reviewing for \textit{Entropy}}
 
-\cvitem{since 2018}{Reviewing for \textit{Ecological Modeling, Entropy}}
+\cvitem{since 2018}{Reviewing for \textit{Ecological Modeling} (1), \textit{Entropy} (1)}
 
-\cvitem{since 2015}{Reviewing for \textit{PLoS ONE}}
+\cvitem{since 2017}{Reviewing for \textit{PLoS ONE} (3)}
 
-\cvitem{since 2015}{Reviewing for \textit{Cybergeo, European Journal of Geography}}
+\cvitem{since 2015}{Reviewing for \textit{Cybergeo} (14)}
 
 %}
 %
@@ -407,6 +445,10 @@ Interdisciplinary approaches of modeling and simulations in urban planning and a
 %\full{
 %
 \section{Scientific Activity}
+
+\cvitem{Oct. 2019}{CCS 2019. Satellite organisation: \textit{New methods and epistemologies to explore simulation models - II}}
+
+\cvitem{Sept. 2019}{ECTQG 2019. Special session organisation: \textit{Geosimulation models exploration methods}}
 
 \cvitem{2018}{Participation in the CNRS experimental project ``\textit{Incubator for scientific mediation}''}
 
