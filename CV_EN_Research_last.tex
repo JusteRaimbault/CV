@@ -21,10 +21,12 @@
 \newcommand{\noun}[1]{\textsc{#1}}
 
 
-\def \fullcv {1}
+\def \shortcv {1}
 \def \withdoi {1}
-\def \witharxiv {1}
-\def \withhal {1}
+%\def \witharxiv {1}
+\def \witharxiv {0}
+%\def \withhal {1}
+\def \withhal {0}
 
 % writing utilities
 
@@ -33,16 +35,31 @@
 \usepackage{xparse}
 \usepackage{ifthen}
 \usepackage{xstring}
+\usepackage{comment}
 
-\DeclareDocumentCommand{\full}{m}{
-\ifthenelse{\fullcv=1}{#1}{}
-}
+% why does not this work? -> add comment by hand
+%\DeclareDocumentCommand{\full}{m}{
+%\ifthenelse{\fullcv=1}{#1}{}
+%}
+%\DeclareDocumentEnvironment{full}{}{\ifdefined\fullcv}{\fi}
+%\DeclareDocumentEnvironment{full}{}{
+%\ifdefined\shortcv
+%  \begin{comment}
+%\fi
+%}{
+%\ifdefined\shortcv
+%  \end{comment}
+%\fi
+%}
+
+
 
 \DeclareDocumentCommand{\doi}{m}{
 %\def \unescapeddoi {\StrSubstitute{#1}{\{\\_\}}{_}}
 \ifthenelse{\withdoi=1}{\href{https://dx.doi.org/#1}{DOI:#1}}{}
 }
 
+% TODO add optional argument to take into account even when no arxiv (for unpublished)
 \DeclareDocumentCommand{\arxiv}{m}{
 \ifthenelse{\witharxiv=1}{\href{https://arxiv.org/abs/#1}{arXiv:#1}}{}
 }
@@ -72,7 +89,7 @@
 \setlength{\hintscolumnwidth}{2cm}
 
 % required
-\firstname{Juste}
+\firstname{Dr. Juste}
 % required
 \familyname{Raimbault}
 
@@ -109,20 +126,74 @@
 
 \usepackage{babel}
 \begin{document}
+
+\vspace{1cm}
+
 \maketitle
 
 
-
-%\vspace{1cm}
+\vspace{1cm}
 
 
 \section{Positions}
 
 \cventry{Since January 2019}{Research Fellow}{CASA, UCL}{London}{UK}{\textit{Coupling land-use transport interaction models with microsimulation models}}
 
-\cventry{March 2018-August 2019}{Post-doctoral Researcher}{Complex Systems Institute - UPS CNRS 3611 ISC-PIF}{Paris}{France}{Postdoc project: \textit{Extending methods to explore spatial simulation models}}
+% March 2018-August 2019
+\cventry{2018}{Post-doctoral Researcher}{Complex Systems Institute - UPS CNRS 3611 ISC-PIF}{Paris}{France}{\textit{Extending methods to explore spatial simulation models}}
 
-\cventry{Feb. 2015--Feb. 2018}{PhD Candidate}{G{\'e}ographie-cit{\'e}s (UMR 8504 CNRS) / LVMT (UMR-T 9403 IFSTTAR)}{}{}{Characterizing and Modeling the Co-evolution of Transportation Networks and Territories}
+
+%\cventry{Feb. 2015--Feb. 2018}{PhD}{G{\'e}ographie-cit{\'e}s (UMR 8504 CNRS) / LVMT (UMR-T 9403 IFSTTAR)}{}{}{Characterizing and Modeling the Co-evolution of Transportation Networks and Territories}
+
+
+
+\section{Education}
+
+
+
+%Feb. 2015--Feb. 2018
+\cventry{2015--2018}{PhD in Geography}{G{\'e}ographie-cit{\'e}s (UMR 8504 CNRS) / LVMT (UMR-T 9403 IFSTTAR)}{}{}{Characterizing and Modeling the Co-evolution of Transportation Networks and Territories%, \textit{under the supervision of }HDR \textsc{A. BANOS} \textit{and} MCF \textsc{F. LE NECHET}.
+}
+
+
+
+\cventry{June 2016}{SFI Complex Systems Summer School}{Santa Fe Institute}{}{}{}%{Santa Fe}{USA}{}
+
+
+
+\cventry{2012--2014}{MSc Complex Systems Science}{Ecole Polytechnique (Ing{\'e}nieur Dipl{\^o}m{\'e})}{}{}{}
+% ParisTech}%{Palaiseau}{France}{
+%Agent-based modeling, Evidence-based methods from Therapeutic Evaluation, Theoretical Analysis of Physical Complex Systems, Epistemology, Complex Networks, Datamining, Signal Processing\\
+%\textit{Memoire: } Complex Network Analysis for Real-time Trend Detection in a Financial System
+%}
+
+
+\cventry{2013--2014}{MSc Urbanism, Environment, Transportation}{Ecole Nationale
+des Ponts et Chauss{\'e}es% ParisTech
+}{}{}{}%{
+%Marne-la-Vall{\'e}e
+%}{
+%France
+%}{
+%Analysis of Territorial Systems, Management and design of Transportation Systems, Urbanism, History of Urbanism, Urban Economics, Environmental Planning and Design\\
+%\textit{Memoires:} 
+%Application of Evidence-based Methods in Urban Planning and Architecture
+%Interdisciplinary approaches of modeling and simulations in urban planning and architecture (M1)
+%; Discrete Choice Models for Bike-sharing Transportation Systems (M2)
+%}
+
+
+\cventry{2010--2012}{BSc}{Ecole Polytechnique}{}{}{}%{Palaiseau}{France}{
+%Multidisciplinary scientific formation (mathematics, computer science, applied mathematics, physics, mecanics, biology, economics)\\
+%\textit{Research internship in Machine Learning and Artificial Intelligence}: Design and implementation of a matching algorithm
+%}
+
+
+%}
+%
+%
+%
+
 
 
 
@@ -156,18 +227,19 @@
 \cvitem{}{Bergeaud, A., Potiron, Y., \& Raimbault, J. (2017). Classifying patents based on their semantic content. \textit{PloS one}, 12(4), e0176310. \doi{10.1371/journal.pone.0176310}}
 
 
-\bigskip
+%\bigskip
+\newpage
 
 \section{Book chapters}
 
-\cvitem{}{Raimbault, J. (2020). Models for the co-evolution of cities and networks, \textit{forthcoming in Handbook on Cities and Networks, Rozenblat C., Neal Z., eds.} \arxiv{1804.09430}}
+\cvitem{}{Raimbault, J. (2020). Models for the co-evolution of cities and networks, \textit{Handbook on Cities and Networks, Rozenblat C., Neal Z., eds.} In press. \href{https://arxiv.org/abs/1804.09430}{arXiv:1804.09430}}
+% \arxiv{1804.09430}
 
+\cvitem{}{Pumain D., \& Raimbault J. (2020) Perspectives on Urban Theories. In: \textit{Pumain D. (ed.), Theories and Models of Urbanization (pp. 303-330). Lecture Notes in Morphogenesis}. Springer, Cham. \doi{10.1007/978-3-030-36656-8\_16}}
 
-\cvitem{}{Pumain D., \& Raimbault J. (2020) Perspectives on Urban Theories. In: \textit{Pumain D. (ed.), Theories and Models of Urbanization (pp. 303-330). Lecture Notes in Morphogenesis}. Springer, Cham.}
+\cvitem{}{Raimbault, J. (2020). Unveiling co-evolutionary patterns in systems of cities : systematic exploration of the SimpopNet model. In \textit{Pumain D. (ed.), Theories and Models of Urbanization (pp. 261-278). Lecture Notes in Morphogenesis}. Springer, Cham. \doi{10.1007/978-3-030-36656-8\_14} \arxiv{1809.00861}}
 
-\cvitem{}{Raimbault, J. (2020). Unveiling co-evolutionary patterns in systems of cities : systematic exploration of the SimpopNet model. In \textit{Pumain D. (ed.), Theories and Models of Urbanization (pp. 261-278). Lecture Notes in Morphogenesis}. Springer, Cham. \arxiv{1809.00861}}
-
-\cvitem{}{Raimbault, J. (2020). Relating complexities for the reflexive study of complex systems. In \textit{Pumain D. (ed.), Theories and Models of Urbanization (pp. 27-41). Lecture Notes in Morphogenesis}. Springer, Cham.}
+\cvitem{}{Raimbault, J. (2020). Relating complexities for the reflexive study of complex systems. In \textit{Pumain D. (ed.), Theories and Models of Urbanization (pp. 27-41). Lecture Notes in Morphogenesis}. Springer, Cham. \doi{10.1007/978-3-030-36656-8\_3}}
 
 
 \cvitem{}{Raimbault, J., \& Pumain, D. (2019). Methods for Exploring Simulation Models. In \textit{Pumain D. (ed.), Geographical Modeling (pp. 125-150)}. Wiley Online Library. \doi{10.1002/9781119687290.ch5}}
@@ -187,7 +259,8 @@
 
 
 
-\cvitem{}{Raimbault, J. (2017). An applied knowledge framework to study complex systems, \textit{Complex Systems Design \& Management} (pp.31-45). \arxiv{1706.09244}}
+\cvitem{}{Raimbault, J. (2017). An applied knowledge framework to study complex systems, \textit{Complex Systems Design \& Management} (pp.31-45). \href{https://arxiv.org/abs/1706.09244}{arXiv:1706.09244}}
+%\arxiv{1706.09244}
 
 
 
@@ -202,17 +275,17 @@
 
 
 
-\cvitem{}{Raimbault, J. (2017). Models coupling urban growth and transportation network growth: An algorithmic systematic review approach. \textit{Plurimondi}, (17), \textit{ECTQG 2015 Proceedings}. \issn{2420-921X}{http://plurimondi.poliba.it/index.php/Plurimondi/article/view/30} \arxiv{1605.08888}}
+\cvitem{}{Raimbault, J. (2017). Models coupling urban growth and transportation network growth: An algorithmic systematic review approach. \textit{Plurimondi}, (17), \textit{ECTQG 2015 Proceedings}. \issn{2420-921X}{http://plurimondi.poliba.it/index.php/Plurimondi/article/view/30}}%\arxiv{1605.08888}
 
 \cvitem{}{Raimbault, J. (2014). User-Based Solutions for Increasing Level of Service in Bike-Sharing Transportation Systems. In \textit{Complex Systems Design \& Management} (pp. 31-44), Springer. \doi{10.1007/978-3-319-11617-4\_3}  \textit{\textbf{Best Student Paper Award at CSDM 2014.}}}
 
-\cvitem{}{Raimbault, J., Banos, A. \& Doursat, R. (2014) A Hybrid Network/Grid Model of Urban Morphogenesis and Optimization. \textit{Proceedings of the 4th International Conference on Complex Systems and Applications} (ICCSA 2014), June 23-26, 2014, Universit{\'e} de Normandie, Le Havre, France; M. A. Aziz-Alaoui, C. Bertelle, X. Z. Liu, D. Olivier, eds.: pp. 51-60.}
-
+\cvitem{}{Raimbault, J., Banos, A. \& Doursat, R. (2014) A Hybrid Network/Grid Model of Urban Morphogenesis and Optimization. \textit{Proceedings of the 4th International Conference on Complex Systems and Applications} (ICCSA 2014), June 23-26, 2014, Universit{\'e} de Normandie, Le Havre, France; M. A. Aziz-Alaoui, C. Bertelle, X. Z. Liu, D. Olivier, eds.: pp. 51-60. \href{http://iccsa2014.univ-lehavre.fr/iccsa2014proceedings.pdf}{Editor} \href{https://arxiv.org/abs/1612.08552}{arXiv:1612.08552}}
+%\arxiv{1612.08552}
 
 
 %\newpage
 
-
+\begin{comment}
 
 \section{Communications}
 
@@ -233,77 +306,77 @@
 
 \cvitem{}{Des syst{\`e}mes naturels aux syst{\`e}mes urbains: g{\'e}n{\'e}ration de r{\'e}seaux de transport optimaux par mod{\`e}le slime-mould, \textit{poster at Biomim'expo 2018, Paris, Oct. 2018.} \hal{halshs-01904499}}
 
-\cvitem{}{Raimbault, J. (2018). Mod{\'e}lisation des interactions entre r{\'e}seaux de transport et territoires : une approche par la co-{\'e}volution. \textit{Journ{\'e}e d'{\'e}tude Pacte-Citeres, Grenoble, Nov. 2018.}}
+\cvitem{}{Raimbault, J. (2018). Mod{\'e}lisation des interactions entre r{\'e}seaux de transport et territoires : une approche par la co-{\'e}volution. \textit{Journ{\'e}e d'{\'e}tude Pacte-Citeres, Grenoble, Nov. 2018.} \hal{halshs-01933916}}
 
-\cvitem{}{A multi-dimensional percolation approach to characterize sustainable mega-city regions, \textit{MARAMI 2018, Avignon, Oct. 2018.}}
+\cvitem{}{A multi-dimensional percolation approach to characterize sustainable mega-city regions, \textit{MARAMI 2018, Avignon, Oct. 2018.} \hal{halshs-01898864}}
 
-\cvitem{}{A systematic comparison of interaction models for systems of cities, \textit{Conference on Complex Systems 2018, Thessaloniki, Sept. 2018.}}
+\cvitem{}{A systematic comparison of interaction models for systems of cities, \textit{Conference on Complex Systems 2018, Thessaloniki, Sept. 2018.} \hal{halshs-01880492}}
 
-\cvitem{}{Extracting knowledge from simulation models: trends and perspectives from the viewpoint of quantitative geography, \textit{Conference on Complex Systems 2018, Thessaloniki, Sept. 2018.}}
-
-
-\cvitem{}{Multi-modeling the morphogenesis of transportation networks. In \textit{Artificial Life Conference Proceedings (pp. 382-383). Tokyo, July 2018.}}
-
-\cvitem{}{Modeling Urban Morphogenesis: towards an integration of territories and networks, \textit{GoPro 2017, Lyon, Dec. 2017.}}
+\cvitem{}{Extracting knowledge from simulation models: trends and perspectives from the viewpoint of quantitative geography, \textit{Conference on Complex Systems 2018, Thessaloniki, Sept. 2018.} \hal{halshs-01882389}}
 
 
-\cvitem{}{Complexity, Complexities and Complex Knowledge, \textit{Geodivercity International Workshop, Paris, October 2017.}}
+\cvitem{}{Multi-modeling the morphogenesis of transportation networks. In \textit{Artificial Life Conference Proceedings (pp. 382-383). Tokyo, July 2018.} \doi{10.1162/isal\_a\_00073}}
+
+\cvitem{}{Modeling Urban Morphogenesis: towards an integration of territories and networks, \textit{GoPro 2017, Lyon, Dec. 2017.} \hal{hal-01808480}}
 
 
-\cvitem{}{Modeling the Co-evolution of Urban Form and Transportation Networks, \textit{Conference on Complex Systems 2017, Cancun, Sept. 2017.}}
+\cvitem{}{Complexity, Complexities and Complex Knowledge, \textit{Geodivercity International Workshop, Paris, October 2017.} \hal{halshs-01632331}}
 
 
-\cvitem{}{Raimbault J. \& Baffi S. (2017). Structural Segregation: Assessing the impact of South African Apartheid on Underlying Dynamics of Interactions between Networks and Territories, \textit{ECTQG 2017, York, Sept. 2017}}
-
-\cvitem{}{Invisible Bridges ? Scientific landscapes around similar objects studied from Economics and Geography perspectives, \textit{ECTQG 2017, York, Sept. 2017}}
-
-\cvitem{}{Raimbault, J. \& Bergeaud, A. (2017). The Cost of Transportation: Spatial Analysis of Fuel Prices in the US, \textit{EWGT 2017, Budapest, Sept. 2017}}
+\cvitem{}{Modeling the Co-evolution of Urban Form and Transportation Networks, \textit{Conference on Complex Systems 2017, Cancun, Sept. 2017.} \hal{halshs-01590624}}
 
 
-\cvitem{}{Cottineau C., Raimbault J., Le Texier M., Le N{\'e}chet F. \& Reuillon R. (2017). Initial spatial conditions in simulation models: the missing leg of sensitivity analyses?, \textit{Geocomputation 2017, Leeds, Sept. 2017}}
+\cvitem{}{Raimbault J. \& Baffi S. (2017). Structural Segregation: Assessing the impact of South African Apartheid on Underlying Dynamics of Interactions between Networks and Territories, \textit{ECTQG 2017, York, Sept. 2017} \hal{halshs-01584914}}
+
+\cvitem{}{Invisible Bridges ? Scientific landscapes around similar objects studied from Economics and Geography perspectives, \textit{ECTQG 2017, York, Sept. 2017} \hal{halshs-01584894}}
+
+\cvitem{}{Raimbault, J. \& Bergeaud, A. (2017). The Cost of Transportation: Spatial Analysis of Fuel Prices in the US, \textit{EWGT 2017, Budapest, Sept. 2017} \hal{halshs-01582909}}
 
 
-\cvitem{}{A macro-scale model of co-evolution for cities and transportation networks, \textit{Medium International Conference, Guangzhou, June 2017}}
+\cvitem{}{Cottineau C., Raimbault J., Le Texier M., Le N{\'e}chet F. \& Reuillon R. (2017). Initial spatial conditions in simulation models: the missing leg of sensitivity analyses?, \textit{Geocomputation 2017, Leeds, Sept. 2017} \hal{halshs-01841272}}
 
 
-\cvitem{}{Losavio C. \& Raimbault J. (2017). Agent-based Modeling of Migrant Workers Residential Dynamics within a Mega-city Region: the Case of Pearl River Delta, China, \textit{Urban China Development International Conference, London, May 2017}}
+\cvitem{}{A macro-scale model of co-evolution for cities and transportation networks, \textit{Medium International Conference, Guangzhou, June 2017} \hal{halshs-01863229}}
+
+
+\cvitem{}{Losavio C. \& Raimbault J. (2017). Agent-based Modeling of Migrant Workers Residential Dynamics within a Mega-city Region: the Case of Pearl River Delta, China, \textit{Urban China Development International Conference, London, May 2017} \hal{halshs-01666887}}
 %
 %
 %% Pierre-Olivier CHASSET, Hadrien COMMENGES (Géographie-Cités – Université Paris 1), Clémentine COTTINEAU (CASA – University College of London), Christine KOSMOPOULOS (Géographie-Cités – Université Paris 1), Denise PUMAIN (Géographie-Cités – Université Paris 1), Juste RAIMBAULT (LVMT, Université Paris-Est): CybergeoNetworks : un outil interactif pour l’analyse de corpus bibliométriques massifs. Science XXL : Ce que l’abondance et la diversité des données font aux sciences sociales
 
 
-\cvitem{}{Co-construire Mod{\`e}les, Etudes Empiriques et Th{\'e}ories en G{\'e}ographie Th{\'e}orique et Quantitative: le cas des Interactions entre R{\'e}seaux et Territoires. \textit{Treizi{\`e}mes Rencontres de Th{\'e}oQuant, Besan\c{c}on, May 2017}}
+\cvitem{}{Co-construire Mod{\`e}les, Etudes Empiriques et Th{\'e}ories en G{\'e}ographie Th{\'e}orique et Quantitative: le cas des Interactions entre R{\'e}seaux et Territoires. \textit{Treizi{\`e}mes Rencontres de Th{\'e}oQuant, Besan\c{c}on, May 2017} \hal{halshs-01525448}}
 
 
-\cvitem{}{Un Cadre de Connaissances pour une G{\'e}ographie Int{\'e}gr{\'e}e. \textit{Journ{\'e}e des jeunes chercheurs de l'Institut de G{\'e}ographie de Paris, Paris, April 2017}}
+\cvitem{}{Un Cadre de Connaissances pour une G{\'e}ographie Int{\'e}gr{\'e}e. \textit{Journ{\'e}e des jeunes chercheurs de l'Institut de G{\'e}ographie de Paris, Paris, April 2017} \hal{halshs-01505084}}
 
 
-\cvitem{}{Towards a Theory of Co-evolutive Networked Territorial Systems: Insights from Transportation Governance Modeling in Pearl River Delta, China. \textit{Medium Seminar-Urban Sustainable Development in Zhuhai, Guangzhou, December 2016}}
+\cvitem{}{Towards a Theory of Co-evolutive Networked Territorial Systems: Insights from Transportation Governance Modeling in Pearl River Delta, China. \textit{Medium Seminar-Urban Sustainable Development in Zhuhai, Guangzhou, December 2016} \hal{halshs-01422484}}
 
 
-\cvitem{}{Models of growth for system of cities : Back to the simple, \textit{Conference on Complex Systems 2016, Amsterdam, Sep 2016.}}
+\cvitem{}{Models of growth for system of cities : Back to the simple, \textit{Conference on Complex Systems 2016, Amsterdam, Sep 2016.} \hal{halshs-01370274}}
 
 
-\cvitem{}{Raimbault J., Bergeaud A. and Potiron Y. (2016). Investigating Patterns of Technological Innovation. \textit{Conference on Complex Systems 2016, Amsterdam, Sep 2016.}}
+\cvitem{}{Raimbault J., Bergeaud A. and Potiron Y. (2016). Investigating Patterns of Technological Innovation. \textit{Conference on Complex Systems 2016, Amsterdam, Sep 2016.} \hal{halshs-01370528}}
 
 
-\cvitem{}{For a Cautious Use of Big Data and Computation. \textit{Royal Geographical Society - Annual Conference 2016 - Session : Geocomputation, the Next 20 Years (1), London, Aug 2016.}}
+\cvitem{}{For a Cautious Use of Big Data and Computation. \textit{Royal Geographical Society - Annual Conference 2016 - Session : Geocomputation, the Next 20 Years (1), London, Aug 2016.} \hal{halshs-01358440}}
 
-\cvitem{}{Indirect Bibliometrics by Complex Network Analysis. \textit{20e Anniversaire de Cybergeo, Paris, May 2016.}}
-
-
-\cvitem{}{Raimbault, J. \& Serra, H. (2016). Game-based Tools as Media to Transmit Freshwater Ecology Concepts, \textit{poster corner at SETAC 2016, Nantes, May 2016.}}
-
-\cvitem{}{Raimbault, J. (2016). G{\'e}n{\'e}ration de donn{\'e}es Synth{\'e}tiques corr{\'e}l{\'e}es, \textit{Actes des Journ{\'e}es de Rochebrune, January 2016.}}
+\cvitem{}{Indirect Bibliometrics by Complex Network Analysis. \textit{20e Anniversaire de Cybergeo, Paris, May 2016.} \hal{halshs-01328058}}
 
 
-\cvitem{}{Le Nechet, F. \& Raimbault, J. (2015). Modeling the emergence of metropolitan transport authority in a polycentric urban region, \textit{ECTQG 2015, Bari, Sept. 2015.}}
+\cvitem{}{Raimbault, J. \& Serra, H. (2016). Game-based Tools as Media to Transmit Freshwater Ecology Concepts, \textit{poster corner at SETAC 2016, Nantes, May 2016.} \hal{halshs-01322860}}
+
+\cvitem{}{Raimbault, J. (2016). G{\'e}n{\'e}ration de donn{\'e}es Synth{\'e}tiques corr{\'e}l{\'e}es, \textit{Actes des Journ{\'e}es de Rochebrune, January 2016.} \hal{halshs-01514415}}
 
 
-\cvitem{}{Hybrid Modeling of a Bike-Sharing Transportation System, \textit{poster at ICCSS 2015, Helsinki, June 2015.}}
+\cvitem{}{Le Nechet, F. \& Raimbault, J. (2015). Modeling the emergence of metropolitan transport authority in a polycentric urban region, \textit{ECTQG 2015, Bari, Sept. 2015.} \hal{halshs-01272236}}
 
 
-\cvitem{}{Raimbault, J. \& Gonzales, J. (2015). Application de la Morphog{\'e}n{\`e}se de R{\'e}seaux Biologiques {\`a} la Conception Optimale d'Infrastructures de Transport, \textit{poster presented at Rencontres du Labex Dynamite, Paris, May 2015.}}
+\cvitem{}{Hybrid Modeling of a Bike-Sharing Transportation System, \textit{poster at ICCSS 2015, Helsinki, June 2015.} \hal{halshs-01330627}}
+
+
+\cvitem{}{Raimbault, J. \& Gonzales, J. (2015). Application de la Morphog{\'e}n{\`e}se de R{\'e}seaux Biologiques {\`a} la Conception Optimale d'Infrastructures de Transport, \textit{poster presented at Rencontres du Labex Dynamite, Paris, May 2015.} \hal{halshs-01860296}}
 
 
 %%\cvitem{}{Loeve, S., Raimbault, J. \& al. (june 2014). Student Event, \textit{at Workshop Worldviews and Values in Synthetic Biology,  University Paris 1 Sorbonne, June 6-7, 2014 (http://synenergene.eu/resource/student-event-paris-workshop-worldviews-and-values-synthetic-biology)}.}
@@ -312,11 +385,14 @@
 %%Inference of Missing Data for Model Parameterization, \textit{lightning
 %%talk at Scientific Open Data Conference (St Mand{\'e}, March 2014)}.}
 %
-%}
+
+
+\end{comment}
+
 %
 %
 %
-%\full{
+\begin{comment}
 
 \section{Working Papers}
 
@@ -339,51 +415,14 @@
 %\cvitem{}{Raimbault, J. \& Marandon E. (2016). Optimizing the Extraction of Information from a Complex System.}
 %%, \textit{submitted to EPJ Data Science.}}
 %
-%}
-%
-%
-%
-%\full{
-%
-%
-\section{Education}
+
+\end{comment}
 
 
 
 
-\cventry{Feb. 2015--Feb. 2018}{PhD in Geography}{G{\'e}ographie-cit{\'e}s (UMR 8504 CNRS) / LVMT (UMR-T 9403 IFSTTAR)}{}{}{Characterizing and Modeling the Co-evolution of Transportation Networks and Territories, \textit{under the supervision of }HDR \textsc{A. BANOS} \textit{and} MCF \textsc{F. LE NECHET}.
-}
-%\cventry{2015--2018}{PhD in Geography}{G{\'e}ographie-cit{\'e}s (UMR 8504 CNRS) / LVMT (UMR-T 9403 IFSTTAR)}{}{}{Characterizing and Modeling the Co-evolution of Transportation Networks and Territories%, \textit{under the supervision of }HDR \textsc{A. BANOS} \textit{and} MCF \textsc{F. LE NECHET}.
-%}
 
-
-\cventry{June 2016}{SFI Complex Systems Summer School}{Santa Fe Institute}{Santa Fe}{USA}{}
-
-
-
-\cventry{2012--2014}{MSc Complex Systems Science}{Ecole Polytechnique ParisTech}{Palaiseau}{France}{Agent-based modeling, Evidence-based methods from Therapeutic Evaluation, Theoretical Analysis of Physical Complex Systems, Epistemology, Complex Networks, Datamining, Signal Processing\\
-\textit{Memoire: } Complex Network Analysis for Real-time Trend Detection in a Financial System
-}
-
-
-\cventry{2013--2014}{MSc Urbanism, Environment, Transportation}{Ecole Nationale
-des Ponts et Chauss{\'e}es ParisTech}{Marne-la-Vall{\'e}e}{France}{Analysis of Territorial Systems, Management and design of Transportation Systems, Urbanism, History of Urbanism, Urban Economics, Environmental Planning and Design\\
-\textit{Memoires:} 
-%Application of Evidence-based Methods in Urban Planning and Architecture
-Interdisciplinary approaches of modeling and simulations in urban planning and architecture (M1)
-; Discrete Choice Models for Bike-sharing Transportation Systems (M2)
-}
-
-
-\cventry{2010--2012}{BSc}{Ecole Polytechnique ParisTech}{Palaiseau}{France}{Multidisciplinary scientific formation (mathematics, computer science, applied mathematics, physics, mecanics, biology, economics)\\
-\textit{Research internship in Machine Learning and Artificial Intelligence}: Design and implementation of a matching algorithm
-}
-
-
-%}
-%
-%
-%
+\begin{comment}
 
 \section{Grants and Awards}
 
@@ -394,10 +433,12 @@ Interdisciplinary approaches of modeling and simulations in urban planning and a
 
 \cvitem{}{\textbf{Best Student Paper Award} at Conference CSD{\&}M, Paris, December 2014.}
 
+\end{comment}
+
 %
 %%\newpage
 %
-%\full{
+\begin{comment}
 %
 \section{Teaching}
 
@@ -406,23 +447,31 @@ Interdisciplinary approaches of modeling and simulations in urban planning and a
 %\cventry{October 2018}{Seminar big data in transportation studies}{Ecole des Ponts et Chauss{\'e}es}{Champs-sur-Marne}{%France
 %}{%\textit{Transportation and Mobility Master Seminar}
 %}
-
-\cventry{March 2018}{Seminar big data in transportation studies}{Ecole des Ponts et Chauss{\'e}es}{Champs-sur-Marne}{%France
+\cventry{2018/2019}{Lecture Modeling mobility (4x3h)}{Ecole des Ponts et Chauss{\'e}es}{Champs-sur-Marne}{%France
 }{%\textit{Transportation and Mobility Master Seminar}
 }
 
 
-\cventry{Spring 2017}{Teaching Assistant}{Universit{\'e} Paris 7}{Paris}{France}{Teaching Assistant: \emph{Statistics and Cartography}, \emph{Spatial Analysis} and \emph{Professionalization for Geographers}.}
 
-\cventry{Feb. 2016}{Seminar Geography and Big Data}{Universit{\'e} Paris 1 Sorbonne}{Paris}{France}{%\textit{G{\'e}oprisme} Master Seminar
+\cventry{2018}{Lecture big data in transportation studies (2x2h)}{Ecole des Ponts et Chauss{\'e}es}{Champs-sur-Marne}{%France
+}{%\textit{Transportation and Mobility Master Seminar}
+}
+% March/October
+
+
+\cventry{Spring 2017}{Teaching Assistant (64h)}{Universit{\'e} Paris 7}{Paris}{France}{Teaching Assistant: \emph{Statistics and Cartography}, \emph{Spatial Analysis} and \emph{Professionalization for Geographers}.}
+
+\cventry{Feb. 2016}{Lecture Geography and Big Data (3h)}{Universit{\'e} Paris 1 Sorbonne}{Paris}{France}{%\textit{G{\'e}oprisme} Master Seminar
 }
 
-\cventry{Fall 2015}{Teaching Assistant}{Universit{\'e} Paris 7}{Paris}{France}{Teaching Assistant: \emph{Introduction to Geography} and \emph{Introduction to GIS}.}
+\cventry{Fall 2015}{Teaching Assistant (64h)}{Universit{\'e} Paris 7}{Paris}{France}{Teaching Assistant: \emph{Introduction to Geography} and \emph{Introduction to GIS}.}
 
 %}
+
+\end{comment}
+
 %
-%
-%\full{
+\begin{comment}
 %
 \section{Reviewing}
 
@@ -441,10 +490,15 @@ Interdisciplinary approaches of modeling and simulations in urban planning and a
 
 %}
 %
+\end{comment}
+
+
 %
 %\full{
 %
 \section{Scientific Activity}
+
+\cvitem{Reviewing}{\textit{Scientific Reports} (1), \textit{Sustainability} (5), \textit{International Journal of Geographical Information} (2), \textit{Environment and Planning B} (1), \textit{Scientometrics} (1), \textit{Energies} (2), \textit{Applied Spatial Analysis and Policy} (1), \textit{Entropy} (1), \textit{Ecological Modeling} (1), \textit{PLoS ONE} (3), \textit{Cybergeo} (14).}
 
 \cvitem{Oct. 2019}{CCS 2019. Satellite organisation: \textit{New methods and epistemologies to explore simulation models - II}}
 
@@ -461,12 +515,12 @@ Interdisciplinary approaches of modeling and simulations in urban planning and a
 %
 %
 %
-\cvitem{Sept. 2017}{ECTQG 2017. Session organisation: \textit{Bridges between Economics and Geography: Lessons from Modeling Perspectives
+\cvitem{Sept. 2017}{ECTQG 2017. Session organisation: \textit{Bridges between Economics and Geography%: Lessons from Modeling Perspectives
 }}
 
 \cvitem{June 2017}{Medium Conference 2017. Session organisation: \textit{Spatio-temporal Behavior in Complex Urban Systems}}
 
-\cvitem{June 2014}{EMCSS Seminar organisation: Comparing Top-down and Bottom-up approaches to Urban Systems}
+%\cvitem{June 2014}{EMCSS Seminar organisation: Comparing Top-down and Bottom-up approaches to Urban Systems}
 
 
 %
@@ -487,7 +541,7 @@ Interdisciplinary approaches of modeling and simulations in urban planning and a
 %}
 %
 %
-%\full{
+\begin{comment}
 %
 \section{Computer skills}
 
@@ -518,6 +572,9 @@ API OO.org, ScalaTex}
 \cvcomputer{}{\textbf{French}, \textit{Native}}{}{\textbf{English}, \textit{Fluent}}
 
 \cvcomputer{}{\textbf{German}, \textit{Fluent, European Baccalaureate}}{}{\textbf{Mandarin}, \textit{Notions, level HSK3}}
+
+
+\end{comment}
 
 
 
