@@ -1,0 +1,3 @@
+Dr. Juste Raimbault is a Research Fellow at the Center for Advanced Spatial Analysis, University College London, and an Associate Researcher at Complex Systems Institute in Paris (UPS CNRS 3611 ISC-PIF) and at Géographie-cités (UMR CNRS 8504).
+Trained as a computer scientist and quantitative geographer, his research interests include the modeling and simulation of complex urban systems, land-use transport interactions, agent-based modeling, artificial life, and bibliometrics. He also focuses on methodology, developing new methods for the validation of spatial simulation models such as spatial sensitivity analysis. He is a contributor to the OpenMOLE platform for model exploration and validation.
+
