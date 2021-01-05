@@ -22,9 +22,10 @@
 
 
 \def \shortcv {1}
+
 \def \withdoi {1}
-%\def \witharxiv {1}
-\def \witharxiv {0}
+\def \witharxiv {1}
+%\def \witharxiv {0}
 \def \withhal {1}
 %\def \withhal {0}
 
@@ -53,6 +54,11 @@
 %}
 
 
+%\usepackage{xargs}
+%\newcommandx{\ids}[3][1=1, 3=n]{
+%}
+% http://www.texfaq.org/FAQ-twooptarg : can not have named args?
+
 
 \DeclareDocumentCommand{\doi}{m}{
 %\def \unescapeddoi {\StrSubstitute{#1}{\{\\_\}}{_}}
@@ -60,9 +66,7 @@
 }
 
 % TODO add optional argument to take into account even when no arxiv (for unpublished)
-\DeclareDocumentCommand{\arxiv}{m}{
-\ifthenelse{\witharxiv=1}{\href{https://arxiv.org/abs/#1}{arXiv:#1}}{}
-}
+\DeclareDocumentCommand{\arxiv}{o m}{\ifthenelse{\witharxiv=1}{\IfNoValueTF{#1}{\href{https://arxiv.org/abs/#2}{arXiv:#2}}{\href{https://arxiv.org/abs/#2}{arXiv:#2 #1}}}{}}
 
 \DeclareDocumentCommand{\hal}{m}{
 \ifthenelse{\withhal=1}{\href{https://hal.archives-ouvertes.fr/#1}{HAL:#1}}{}
@@ -205,12 +209,14 @@ des Ponts et Chauss{\'e}es% ParisTech
 
 %\section{Selected publications}
 
-\cvitem{}{Raimbault J., Denis E., Pumain D. (2020). Empowering urban governance through urban science: multi-scale dynamics of urban systems worldwide. Forthcoming in \textit{Sustainability}. \href{https://arxiv.org/abs/2005.10007}{arXiv:2005.10007}}
-% \arxiv{2005.10007}
+\cvitem{}{Raimbault J., Denis E., Pumain D. (2020). Empowering Urban Governance through Urban Science: Multi-Scale Dynamics of Urban Systems Worldwide. \textit{Sustainability}, 12, 5954. \doi{10.3390/su12155954}} % \arxiv{2005.10007}
 
-\cvitem{}{Raimbault J., Broere J., Somveille M., Serna J.M., Strombom E. Moore C., Sugar L., Zhu B. (2020). A spatial agent based model for simulating and optimizing networked eco-industrial systems. \textit{Resources Conservation and Recycling}, 155:104538. \doi{10.1016/j.resconrec.2019.104538}}
+
+\cvitem{}{Raimbault J., Broere J., Somveille M., Serna J.M., Strombom E. Moore C., Sugar L., Zhu B. (2020). A spatial agent based model for simulating and optimizing networked eco-industrial systems. \textit{Resources Conservation and Recycling}, 155, 104538. \doi{10.1016/j.resconrec.2019.104538}}
 
 \cvitem{}{Bergeaud, A. \& Raimbault, J. (2020). An Empirical Analysis of the Spatial Variability of Fuel Prices in the United States. \textit{Transportation Research Part A: Policy and Practice}, 132, 131-143. \doi{10.1016/j.tra.2019.10.016}}
+
+\cvitem{}{Raimbault, J. (2020). Indirect evidence of network effects in a system of cities. \textit{Environment and Planning B: Urban Analytics and City Science}, 47(1), 138-155. \doi{10.1177/2399808318774335}}
 
 \cvitem{}{Raimbault, J. (2019). Second-order Control of Complex Systems with Correlated Synthetic Data. \textit{Complex Adaptive Systems Modeling}, 7(4). \doi{10.1186/s40294-019-0065-y}}
 
@@ -227,7 +233,6 @@ des Ponts et Chauss{\'e}es% ParisTech
 
 \cvitem{}{Raimbault, J. (2018). Calibration of a density-based model of urban morphogenesis. \textit{PloS one}, 13(9), e0203516. \doi{10.1371/journal.pone.0203516}}
 
-\cvitem{}{Raimbault, J. (2018). Indirect evidence of network effects in a system of cities. \textit{Environment and Planning B: Urban Analytics and City Science}, 2399808318774335. \doi{10.1177/2399808318774335}}
 
 \cvitem{}{Bergeaud, A., Potiron, Y., \& Raimbault, J. (2017). Classifying patents based on their semantic content. \textit{PloS one}, 12(4), e0176310. \doi{10.1371/journal.pone.0176310}}
 
@@ -237,25 +242,28 @@ des Ponts et Chauss{\'e}es% ParisTech
 
 \section{Book chapters}
 
-\cvitem{}{Raimbault, J. (2020). Hierarchy and co-evolution processes in urban systems, forthcoming in \textit{Centralities and Hierarchy of Networks and Territories, Fen-Chong J., ed., ISTE Editions} \href{https://arxiv.org/abs/2001.11989}{arXiv:2001.11989}}
-% \arxiv{2001.11989}
 
-\cvitem{}{Raimbault, J. (2020). Models for the co-evolution of cities and networks, \textit{Handbook on Cities and Networks, Rozenblat C., Neal Z., eds.} In press. \href{https://arxiv.org/abs/1804.09430}{arXiv:1804.09430}}
-% \arxiv{1804.09430}
+\cvitem{}{Raimbault, J. \& Pumain, D. (2021). Spatial dynamics of complex urban systems within an evolutionary theory frame, forthcoming in \textit{Handbook Entropy, Complexity, Spatial Dynamics: The rebirth of theory, Reggiani, A., ed., Edward Elgar.} \arxiv{2010.1489}}
+
+\cvitem{}{Raimbault, J. (2021). Hierarchy and co-evolution processes in urban systems, forthcoming in \textit{Centralities and Hierarchy of Networks and Territories, Fen-Chong J., ed., ISTE Editions.} \arxiv{2001.11989}}
+
+
+\cvitem{}{Raimbault, J. (2021). Models for the co-evolution of cities and networks, \textit{Handbook on Cities and Networks, Rozenblat C., Neal Z., eds., Edward Elgar.} In press. \arxiv{1804.09430}}
+
 
 \cvitem{}{Pumain D., \& Raimbault J. (2020) Perspectives on Urban Theories. In: \textit{Pumain D. (ed.), Theories and Models of Urbanization (pp. 303-330). Lecture Notes in Morphogenesis}. Springer, Cham. \doi{10.1007/978-3-030-36656-8\_16}}
 
-\cvitem{}{Raimbault, J. (2020). Unveiling co-evolutionary patterns in systems of cities : systematic exploration of the SimpopNet model. In \textit{Pumain D. (ed.), Theories and Models of Urbanization (pp. 261-278). Lecture Notes in Morphogenesis}. Springer, Cham. \doi{10.1007/978-3-030-36656-8\_14} \arxiv{1809.00861}}
+\cvitem{}{Raimbault, J. (2020). Unveiling co-evolutionary patterns in systems of cities : systematic exploration of the SimpopNet model. In \textit{Pumain D. (ed.), Theories and Models of Urbanization (pp. 261-278). Lecture Notes in Morphogenesis}. Springer, Cham. \doi{10.1007/978-3-030-36656-8\_14}} % \arxiv{1809.00861}
 
 \cvitem{}{Raimbault, J. (2020). Relating complexities for the reflexive study of complex systems. In \textit{Pumain D. (ed.), Theories and Models of Urbanization (pp. 27-41). Lecture Notes in Morphogenesis}. Springer, Cham. \doi{10.1007/978-3-030-36656-8\_3}}
 
 
 \cvitem{}{Raimbault, J., \& Pumain, D. (2019). Methods for Exploring Simulation Models. In \textit{Pumain D. (ed.), Geographical Modeling (pp. 125-150)}. Wiley Online Library. \doi{10.1002/9781119687290.ch5}}
 
-\cvitem{}{Raimbault, J. (2019). An urban morphogenesis model capturing interactions between networks and territories. In \textit{D'Acci L. (ed.), The Mathematics of Urban Morphology (pp. 383-409)}. Birkhauser, Cham. \doi{10.1007/978-3-030-12381-9\_17} \arxiv{1805.05195}}
+\cvitem{}{Raimbault, J. (2019). An urban morphogenesis model capturing interactions between networks and territories. In \textit{D'Acci L. (ed.), The Mathematics of Urban Morphology (pp. 383-409)}. Birkhauser, Cham. \doi{10.1007/978-3-030-12381-9\_17}} % \arxiv{1805.05195}
 
 
-\cvitem{}{Raimbault, J. (2019). Evolving accessibility landscapes: mutations of transportation networks in China. In \textit{Aveline N. (ed.), Pathways of Sustainable Development across China: the Cases of Hangzhou, Datong and Zhuhai (pp. 89-108)}. Imago Editor, \isbn{978-88-94384-71-0}{http://mediumcities-china.org/download/2262/} \arxiv{1812.01473} \hal{halshs-02265423}}
+\cvitem{}{Raimbault, J. (2019). Evolving accessibility landscapes: mutations of transportation networks in China. In \textit{Aveline N. (ed.), Pathways of Sustainable Development across China: the Cases of Hangzhou, Datong and Zhuhai (pp. 89-108)}. Imago Editor, \isbn{978-88-94384-71-0}{http://mediumcities-china.org/download/2262/}} % \arxiv{1812.01473} \hal{halshs-02265423}
 
 
 \bigskip
@@ -264,28 +272,27 @@ des Ponts et Chauss{\'e}es% ParisTech
 \section{Conference papers}
 
 
-\cvitem{}{Raimbault, J. (2020). A model of urban evolution based on innovation diffusion. \textit{The 2020 Conference on Artificial Life}. \href{https://arxiv.org/abs/2004.15023}{arXiv:2004.15023}}
+\cvitem{}{Raimbault, J. (2020). A model of urban evolution based on innovation diffusion. \textit{The 2020 Conference on Artificial Life}. \doi{10.1162/isal\_a\_00283}} % \arxiv{2004.15023}
 
-\cvitem{}{Raimbault, J., Perret, J. \& Reuillon, R. (2020). A scala library for spatial sensitivity analysis. \textit{GISRUK 2020 Proceedings}.}
+\cvitem{}{Raimbault, J., Perret, J. \& Reuillon, R. (2020). A scala library for spatial sensitivity analysis. \textit{GISRUK 2020 Proceedings}. \arxiv{2007.10667} ; \href{http://london.gisruk.org/gisruk2020_proceedings.zip}{Editor}}
 
 
 \cvitem{}{Raimbault, J. \& Perret, J. (2019). Generating urban morphologies at large scales. \textit{The 2019 Conference on Artificial Life 2019 NO. 31}, 179-186. \doi{10.1162/isal\_a\_00159}}
 
 
 
-\cvitem{}{Raimbault, J. (2017). An applied knowledge framework to study complex systems, \textit{Complex Systems Design \& Management} (pp.31-45). \href{https://arxiv.org/abs/1706.09244}{arXiv:1706.09244}}
-%\arxiv{1706.09244}
+\cvitem{}{Raimbault, J. (2017). An applied knowledge framework to study complex systems, \textit{Complex Systems Design \& Management} (pp.31-45). \arxiv{1706.09244}}
+% pas catalog BNF: ? https://catalogue.bnf.fr/rechercher.do?motRecherche=Complex+systems+design+and+management+2017&critereRecherche=0&depart=0&facetteModifiee=ok
+
+
+\cvitem{}{Raimbault, J. (2017). Identification de causalit{\'e}s dans des donn{\'e}es spatio-temporelles, Sageo 2017 Proceedings. \arxiv[(English translation)]{1709.08684}}
+
+
+\cvitem{}{Raimbault, J. (2017). A Discrepancy-Based Framework to Compare Robustness Between Multi-attribute Evaluations. In \textit{Complex Systems Design \& Management} (pp. 141-154), Springer. \doi{10.1007/978-3-319-49103-5\_11}} % \arxiv{1608.00840} \hal{halshs-01424253}
 
 
 
-\cvitem{}{Raimbault, J. (2017). Identification de causalit{\'e}s dans des donn{\'e}es spatio-temporelles, Sageo 2017 Proceedings. \href{https://arxiv.org/abs/1709.08684}{arXiv:1709.08684 (English translation)}}
-
-
-\cvitem{}{Raimbault, J. (2017). A Discrepancy-Based Framework to Compare Robustness Between Multi-attribute Evaluations. In \textit{Complex Systems Design \& Management} (pp. 141-154), Springer. \doi{10.1007/978-3-319-49103-5\_11} \arxiv{1608.00840} \hal{halshs-01424253}}
-
-
-
-\cvitem{}{Raimbault, J. (2017). Investigating the empirical existence of static user equilibrium. \textit{Transportation Research Procedia}, 22, 450-458. \doi{10.1016/j.trpro.2017.03.053} \arxiv{1608.05266} \hal{halshs-01360243}}
+\cvitem{}{Raimbault, J. (2017). Investigating the empirical existence of static user equilibrium. \textit{Transportation Research Procedia}, 22, 450-458. \doi{10.1016/j.trpro.2017.03.053}} % \arxiv{1608.05266} \hal{halshs-01360243}
 
 
 
@@ -293,7 +300,7 @@ des Ponts et Chauss{\'e}es% ParisTech
 
 \cvitem{}{Raimbault, J. (2014). User-Based Solutions for Increasing Level of Service in Bike-Sharing Transportation Systems. In \textit{Complex Systems Design \& Management} (pp. 31-44), Springer. \doi{10.1007/978-3-319-11617-4\_3}  \textit{\textbf{Best Student Paper Award at CSDM 2014.}}}
 
-\cvitem{}{Raimbault, J., Banos, A. \& Doursat, R. (2014) A Hybrid Network/Grid Model of Urban Morphogenesis and Optimization. \textit{Proceedings of the 4th International Conference on Complex Systems and Applications} (ICCSA 2014), June 23-26, 2014, Universit{\'e} de Normandie, Le Havre, France; M. A. Aziz-Alaoui, C. Bertelle, X. Z. Liu, D. Olivier, eds.: pp. 51-60. \href{http://iccsa2014.univ-lehavre.fr/iccsa2014proceedings.pdf}{Editor} \href{https://arxiv.org/abs/1612.08552}{arXiv:1612.08552}}
+\cvitem{}{Raimbault, J., Banos, A. \& Doursat, R. (2014) A Hybrid Network/Grid Model of Urban Morphogenesis and Optimization. \textit{Proceedings of the 4th International Conference on Complex Systems and Applications} (ICCSA 2014), June 23-26, 2014, Universit{\'e} de Normandie, Le Havre, France; M. A. Aziz-Alaoui, C. Bertelle, X. Z. Liu, D. Olivier, eds.: pp. 51-60. \arxiv{1612.08552} ; \href{http://iccsa2014.univ-lehavre.fr/iccsa2014proceedings.pdf}{Editor}}
 %\arxiv{1612.08552}
 
 
@@ -302,6 +309,8 @@ des Ponts et Chauss{\'e}es% ParisTech
 %\begin{comment}
 
 \section{Communications}
+
+\cvitem{}{A co-evolution agent-based model for systems of cities and transportation networks integrating top-down governance through game theory, \textit{Conference on Complex Systems 2020, Dec. 2020.}}
 
 \cvitem{}{Raimbault J. \& Zdanowska N. (2020). A generative model for urban firm networks, \textit{NetSci 2020, Rome, Sept 2020.}}
 
@@ -415,19 +424,25 @@ des Ponts et Chauss{\'e}es% ParisTech
 \section{Working Papers}
 
 
-\cvitem{}{Raimbault, J. (2020). An agent-based model of interdisciplinary interactions in science. \href{https://arxiv.org/abs/2006.16399}{arxiv:2006.16399}}
+\cvitem{}{Raimbault, J. (2020). A systematic review and meta-analysis of models coupling transportation networks with territories. \arxiv{2012.13367}}
 
-\cvitem{}{Raimbault, J. (2020). Cities as they could be: Artificial Life and Urban Systems. \href{https://arxiv.org/abs/2002.12926}{arxiv:2002.12926}}
+\cvitem{}{Raimbault, J. (2020). A comparison of simple models for urban morphogenesis. \arxiv{2008.13277}}
+
+\cvitem{}{Raimbault, J., Zdanowska, N. \& Arcaute, E. (2020). Modeling growth of urban firm networks. \arxiv{2009.05528}}
+
+\cvitem{}{Raimbault, J. (2020). An agent-based model of interdisciplinary interactions in science. \arxiv{2006.16399}}
+
+\cvitem{}{Raimbault, J. (2020). Cities as they could be: Artificial Life and Urban Systems. \arxiv{2002.12926}}
 
 \cvitem{}{Raimbault, J. \& Le Nechet, F. (2018). Closing the loop: Introducing Endogenous Transport Provision in a LUTI Model. \textit{Under review for Journal of Transport Geography.}}
 
-\cvitem{}{Raimbault, J. (2019). Space and complexities of territorial systems. \href{https://arxiv.org/abs/1901.09869}{arxiv:1901.09869}}
+\cvitem{}{Raimbault, J. (2019). Space and complexities of territorial systems. \arxiv{1901.09869}}
 
-\cvitem{}{Raimbault, J. (2019). Modeling interactions between transportation networks and territories: a co-evolution approach. \href{https://arxiv.org/abs/1902.04802}{arxiv:1902.04802}}
+\cvitem{}{Raimbault, J. (2019). Modeling interactions between transportation networks and territories: a co-evolution approach. \arxiv{1902.04802}}
 
-\cvitem{}{Raimbault, J. (2018). Co-evolution and morphogenetic systems. \href{https://arxiv.org/abs/1803.11457}{arxiv:1803.11457}}
+\cvitem{}{Raimbault, J. (2018). Co-evolution and morphogenetic systems. \arxiv{1803.11457}}
 
-\cvitem{}{Raimbault, J. (2018). Reconciling complexities: for a stronger integration of approaches to socio-technical systems. \href{https://arxiv.org/abs/1805.10195}{arxiv:1805.10195}}
+\cvitem{}{Raimbault, J. (2018). Reconciling complexities: for a stronger integration of approaches to socio-technical systems. \arxiv{1805.10195}}
 
 %\cvitem{}{Antelope, C., Hubatsch, L., Raimbault, J., and Serna, J. M. (2016). An interdisciplinary approach to morphogenesis. \textit{Working Paper, Santa Fe Institute CSSS 2016.}}
 
