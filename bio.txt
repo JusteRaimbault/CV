@@ -1,3 +1,10 @@
+
+
+Dr Juste Raimbault is a Permanent Research Fellow in sustainable development at Institut Géographique National in Paris, and an Honorary Research Fellow at CASA, UCL. His research interests include the modeling and simulation of complex urban systems, land-use transport interactions, agent-based modeling, artificial life, and bibliometrics. He also focuses on methodology, developing new methods for the validation of spatial simulation models such as spatial sensitivity analysis. He is a contributor to the OpenMOLE platform for model exploration and validation.
+
+
+====
+
 Dr. Juste Raimbault is a Research Fellow at the Center for Advanced Spatial Analysis and at the Institute for Global Prosperity, University College London. He is also  an Associate Researcher at Complex Systems Institute in Paris (UPS CNRS 3611 ISC-PIF) and at Géographie-cités (UMR CNRS 8504).
 He was trained as a computer scientist (ingénieur de l'Ecole Polytechnique, 2014) and quantitative geographer (ingénieur de l'Ecole des Ponts et Chaussées, 2014; PhD in Geography at Universite Paris Diderot under the supervision of A. Banos and F. Le Nechet, 2018). His research interests include the modeling and simulation of complex urban systems, land-use transport interactions, agent-based modeling, artificial life, and bibliometrics. He also focuses on methodology, developing new methods for the validation of spatial simulation models such as spatial sensitivity analysis. He is a contributor to the OpenMOLE platform for model exploration and validation. He is a member of editorial board of GeOpenmod for the Cybergeo journal.
 
